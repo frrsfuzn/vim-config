@@ -1,9 +1,13 @@
 let g:opamshare = substitute(system('opam var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
+" c configuration
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd filetype c nnoremap <F9> :w<bar>term ++shell gcc %:p -o %:p:r && %:p:r<CR>
+
+" cpp configuration
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F9> :w<bar>term ++shell g++ %:p -o %:p:r && %:p:r<CR>
-autocmd filetype c nnoremap <F9> :w<bar>term ++shell gcc %:p -o %:p:r && %:p:r<CR>
 
 " go configuration
 autocmd filetype go nnoremap <F9> :w<bar>term ++shell go run %:p<CR>
