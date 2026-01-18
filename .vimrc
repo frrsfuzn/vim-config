@@ -15,6 +15,9 @@ autocmd filetype go inoremap <F9> <Esc>:w<bar>term ++shell go run %:p<CR>
 autocmd FileType go nnoremap <buffer> <leader>p i fmt.Println()<Esc>F(a
 autocmd FileType go vnoremap <buffer> <leader>p cfmt.Println(<C-r>")<Esc>
 
+" rust configuration
+autocmd FileType rust nnoremap <buffer> <F9> :w<bar>term ++shell rustc %:p -o %:p:r && %:p:r; rm %:p:r<CR>
+
 
 set tabstop=2
 set shiftwidth=2
